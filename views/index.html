@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Metric/Imperial Converter</title>
     <meta name="description" content="An example of the Free Code Camp Metric/Imperial Converter Project">
@@ -8,52 +8,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./public/style.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/68e1096454.js" crossorigin="anonymous"></script>
   </head>
+
   <body>
-    <header>
-      <h1>Metric/Imperial Converter</h1>
-    </header>
-    <hr style='margin: 50px'>
-    <section>
-      <h3>Example usage</h3>
-      <code>/api/convert?input=4gal</code><br>
-      <code>/api/convert?input=1/2km</code><br>
-      <code>/api/convert?input=5.4/3lbs</code><br>
-      <code>/api/convert?input=kg</code><br>
-      <h3>Example return</h3>
-      <code>{ initNum: 3.1, initUnit: 'mi', returnNum: 4.98895, returnUnit: 'km', string: '3.1 miles converts to 4.98895 kilometers' }</code>
-    </section>
-    <hr style='margin: 50px'>
-    <section>
-      <div id='testui' >
-        <h3 style="text-align: left">Front-End</h3>
-        <form id="convertForm" class="border">
-          <input type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 200px">
-          <input id="convert" type="submit" value='Convert!'>
-        </form>
-        <p id='result'></p>
-        <code id='jsonResult'></code>
+    <div class="jumbo">
+    </div>
+  
+    <div class="logo">
+    </div>
+
+    <div class="main_app_div">
+      <header>
+        <h1>Metric/Imperial Converter</h1>
+        <p>This app converts imperial units into metric units or vice versa.</p>
+      </header>
+
+      <section>
+        <div>
+          <div id='testui' >
+            <h3 style="text-align: left">Front-End</h3>
+            <form id="convertForm" class="border">
+              <input class="input-text" type="text" id="convertField" name="input" placeholder="3.1mi" style="width: 215px">
+              <input class="submit-button" id="convert" type="submit" value='Convert!'>
+            </form>
+            <div><p>Results</p></div>
+            <div class="converted-results">
+              <p id='result'></p>
+            </div>
+            <div><p>Code</p></div>
+            <div class="resultsincode">
+              <code id='jsonResult'></code>
+            </div>
+            
+          </div>
+        </div>
+        
+      </section>
+
+      <div>
+        <hr style='margin: 50px'>
       </div>
-    </section>
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
-    <script>
-      $(function() {
-        $('#convertForm').submit(function(event) {
-          event.preventDefault();
-          $.ajax({
-            url: '/api/convert',
-            type: 'get',
-            data: $('#convertForm').serialize(),
-            success: function(data) {
-              $('#result').text(data.string || data);
-              $('#jsonResult').text(JSON.stringify(data));
-            }
+
+      <section>
+        <div>
+          <h3>Example usage</h3>
+          <code>/api/convert?input=4gal</code><br>
+          <code>/api/convert?input=1/2km</code><br>
+          <code>/api/convert?input=5.4/3lbs</code><br>
+          <code>/api/convert?input=kg</code><br>
+          <h3>Example return</h3>
+          <code>{ initNum: 3.1, initUnit: 'mi', returnNum: 4.98895, returnUnit: 'km', string: '3.1 miles converts to 4.98895 kilometers' }</code>
+        </div>
+      
+      </section>
+
+      <!-- Your web-app is https, so your scripts need to be too -->
+      <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+              integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+              crossorigin="anonymous"></script>
+      <script>
+        $(function() {
+          $('#convertForm').submit(function(event) {
+            event.preventDefault();
+            $.ajax({
+              url: '/api/convert',
+              type: 'get',
+              data: $('#convertForm').serialize(),
+              success: function(data) {
+                $('#result').text(data.string || data);
+                $('#jsonResult').text(JSON.stringify(data));
+              }
+            });
           });
         });
-      });
-   </script>
+     </script>
+    </div>
+
+    <div class="footer-div">
+      <footer>
+        <p class="footer_text"><span>Built by Nathan Morris, Toronto CA. Copyright 2024</span></p>
+        <div class="flex-container-footer">
+          <div class="social-icon"><a rel="noopener" href="https://www.linkedin.com/in/nate-smith-aab65b42/" target="_blank" class="btn contact-details"><i class="fab fa-linkedin"></i></a></div>
+          <div class="social-icon"><a id="profile-link" rel="noopener" href="https://github.com/NathanMorris14" target="_blank" class="btn contact-details"><i class="fab fa-github"></i></a></div>
+          <div class="social-icon"><a id="profile-link" rel="noopener" href="https://codepen.io/nathanmorris11" target="_blank" class="btn contact-details"><i class="fab fa-codepen"></i></a></div>
+          <div class="social-icon"><a href="mailto:nathana.morris14@yahoo.ca" class="btn contact-details"><i class="fas fa-at"></i></a></div>
+        </div>
+      </footer>
+    </div>
+
   </body>
+  
 </html>
